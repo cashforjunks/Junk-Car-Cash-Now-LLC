@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin or private paths (none currently, placeholder for future)
+# Disallow: /admin/
+
+# Sitemap location — update domain when confirmed
+Sitemap: https://junkcarcashnow.online/sitemap.xml
