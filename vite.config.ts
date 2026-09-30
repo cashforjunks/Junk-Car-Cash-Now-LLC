@@ -2,8 +2,14 @@ import { defineConfig, type HtmlTagDescriptor, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
+import fs from 'node:fs'
 
-import siteConfiguration from './.figma/make/site.json'
+// Load site.json at build time — fs.readFileSync avoids Rolldown JSON import issues
+const siteJsonPath = path.resolve(__dirname, '.figma/make/site.json')
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const siteConfiguration: any = fs.existsSync(siteJsonPath)
+  ? JSON.parse(fs.readFileSync(siteJsonPath, 'utf-8'))
+  : {}
 
 
 // Vite config — https://vitejs.dev/config/
